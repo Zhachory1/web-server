@@ -2,17 +2,8 @@ var express = require('express');
 var app = express();
 const PORT = 3000;
 
-var midWare = {
-	requireAuthentication: function (req, res, next) {
-		console.log("Private route hit!");
-		next();
-	},
-	logger: function (req, res, next) {
-		var day = new Date().toString();
-		console.log("Request " + day + ": " + req.method + " " + req.originalUrl);
-		next();
-	}
-}
+var midWare = require('./midWare.js')
+
 
 app.use(midWare.logger);
 
